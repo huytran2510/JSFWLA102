@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Title</title>
+    <link th:href="@{/css/menu.css}" type="text/css" rel="stylesheet">
+    <link href="/static/css/home-view.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/menu.css" type="text/css" rel="stylesheet">
+    <style>
+         span{
+             color: red;
+         }
+    </style>
+</head>
+<body>
+<h1>Blog</h1>
+<div>
+    <div class="menu">
+        <ul>
+            <div class="home-click">
+                <li><a href="">Home</a></li>
+            </div>
+            <div class="about-click">
+                <li><a href="">About</a></li>
+            </div>
+            <div class="contact-click">
+                <li><a href="">Contact</a></li>
+            </div>
+            <div class="login-click">
+                <li><a href="">Login</a></li>
+            </div>
+        </ul>
+    </div>
+    <div id="login" >
+        <a href="#">Home</a> >> Login
+        <br>
+        <h1>Login</h1>
+        <p>Please fill out the following form with your login credentials.</p>
+        <p>Fields with <span>*</span> are required</p>
+        <div>
+            <form th:action="@{/login}" method="POST">
+                <label for="userName">Username <span>*</span></label><br>
+                <input type="text" id="username" name="username"/><br>
+                <label for="passWord">Password <span>*</span></label><br>
+                <input type="password" id="password" name="password"/><br>
+                Hint: You may log in with demo/demo.<br>
+                <input type="checkbox"/> Remember me next time.<br>
+                <button type="submit">Login</button>
+                <h4 class="text-center">
+                    <a th:href="@{/register}">Create an account</a>
+                </h4>
+            </form>
+        </div>
+    </div>
+    <div class="home" id="home" style="display: none">
+        <div class="content1">
+            <h2>Welcome!</h2>
+            <hr/>
+            <p>posted by demo on january 2, 2009</p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste officiis
+                nihil accusantium assumenda rerum, commodi consequatur, omnis
+                voluptate temporibus libero quam nesciunt vero harum quis tenetur
+                exercitationem eveniet beatae dignissimos.
+            </p>
+            <div class="form-blog">
+                Tags: <a href="#"> blog</a> <br/>
+                <a href="#">Permalink </a> | <a href="">Comments</a> | Last update on
+                january 2, 2009
+            </div>
+
+            <h2>A Test Post</h2>
+            <hr/>
+            <p>posted by demo on january 2, 2009</p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste officiis
+                nihil accusantium assumenda rerum, commodi consequatur, omnis
+                voluptate temporibus libero quam nesciunt vero harum quis tenetur
+                exercitationem eveniet beatae dignissimos.
+            </p>
+            <div class="form-blog">
+                Tags: <a href="#"> blog</a> <br/>
+                <a href="#">Permalink </a> | <a href="">Comments</a> | Last update on
+                january 2, 2009
+            </div>
+        </div>
+
+        <div class="content2" style="width: 150px;">
+            <div style=" background-color: #effdff">
+                <p style="background-color: #b7d6e7"><span style="background-color: #6faccf">&nbsp</span> Tags</p>
+                <a href="#">
+                    <div>blog test</div>
+                </a>
+            </div>
+            <div style=" background-color: #effdff">
+                <p style="background-color: #b7d6e7"><span style="background-color: #6faccf">&nbsp</span> Rencent Comments</p>
+                <div>Tester on <a href="#">A Test Post</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="contact" style="display: none">
+        <a href="home-page.html">Home</a> >> Contact
+        <br>
+        <h1>Contact Us</h1>
+        <p>If you have business inquiries or other question, please fill out the following form to contact us. Thank
+            you.</p>
+        <p>Fields with <span>*</span> are required</p>
+        <form>
+            Name <span>*</span> <br>
+            <input type="text"> <br>
+            Email <span>*</span> <br>
+            <input type="email"> <br>
+            Subject <span>*</span> <br>
+            <input type="text"> <br>
+            Body <span>*</span> <br>
+            <textarea></textarea> <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="about" style="display: none">
+        <a href="home-page.html">Home</a> >> About
+        <br>
+        <h1>About</h1>
+        <p>This is the "about" page for my blog site</p>
+    </div>
+    <div class="footer" style="text-align: center; ">
+        <hr>
+        <p>Copyright © 2016 by My Company</p>
+        <p>All Right Reserved.</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $(".home-click").click(function (event) {
+            event.preventDefault();
+            $("#login").hide();
+            $("#contact").hide();
+            $("#about").hide();
+            $("#home").show();
+        });
+        $(".contact-click").click(function (event) {
+            event.preventDefault();
+            $("#about").hide();
+            $("#login").hide();
+            $("#home").hide();
+            $("#contact").show();
+        });
+        $(".about-click").click(function (event) {
+            event.preventDefault();
+            $("#home").hide();
+            $("#login").hide();
+            $("#contact").hide();
+            $("#about").show();
+        });
+        $(".login-click").click(function (event) {
+            event.preventDefault();
+            $("#home").hide();
+            $("#contact").hide();
+            $("#about").hide();
+            $("#login").show();
+        });
+    });
+</script>
+
+</body>
+</html>
